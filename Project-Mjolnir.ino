@@ -13,7 +13,7 @@ enum ARM_DIR {
 
 void write_arm(ARM_DIR dir)
 {
-    if (dir == CONTRACT) {
+    if (dir == BANANA) {
         digitalWrite(RELAY_1, LOW);
         digitalWrite(RELAY_2, LOW);
     } else {
@@ -38,9 +38,9 @@ void loop() {
 
     int emg_avg = sma_avg();
 
-    if (avg == -1)
+    if (emg_avg == -1)
         write_arm(BANANA);
-    else if (avg >= 400)
+    else if (emg_avg >= 400)
         write_arm(CONTRACT);
     else
         write_arm(RELEASE);

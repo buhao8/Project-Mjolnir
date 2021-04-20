@@ -1,7 +1,9 @@
 #include "sma.h"
 #include <assert.h>
+#include <stdint.h>
+#include <stddef.h>
 
-#define SMA_SIZE_MAX 2048
+#define SMA_SIZE_MAX 400
 static uint16_t SMA_BUF[SMA_SIZE_MAX];
 static size_t SMA_SIZE = SMA_SIZE_MAX;
 
