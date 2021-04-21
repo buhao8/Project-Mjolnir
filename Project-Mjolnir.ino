@@ -24,13 +24,21 @@ void write_arm(ARM_DIR dir)
 
 void setup()
 {
-  pinMode(RELAY_1, OUTPUT);
-  pinMode(RELAY_2, OUTPUT);
-  write_arm(BANANA);
+    pinMode(A0, INPUT);
+    pinMode(RELAY_1, OUTPUT);
+    pinMode(RELAY_2, OUTPUT);
+    write_arm(BANANA);
 
-  Serial.begin(115200);
+    Serial.begin(115200);
 
-  sma_init(100);
+    sma_init(500, bell);
+}
+
+void bell(int x) {
+    /*
+       Serial.print("reached target at: ");
+       Serial.println(x);
+     */
 }
 
 void loop() {
@@ -40,7 +48,7 @@ void loop() {
 
     if (emg_avg == -1)
         write_arm(BANANA);
-    else if (emg_avg >= 400)
+    else if (emg_avg < 250)
         write_arm(CONTRACT);
     else
         write_arm(RELEASE);

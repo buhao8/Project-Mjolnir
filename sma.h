@@ -1,12 +1,9 @@
 #pragma once
 #include <stddef.h>
+#include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-    extern void sma_init(size_t);
-    extern void sma_push(int);
-    extern int sma_avg(void);
-#ifdef __cplusplus
-}
-#endif
+
+extern void sma_init(size_t, void (*)(int));
+extern void sma_push(int);
+extern uint32_t sma_avg(void);
+extern int get_size();
